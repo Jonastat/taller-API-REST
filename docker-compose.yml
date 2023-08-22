@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  mysqldb:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword123
+      MYSQL_DATABASE: datosAPI
+      MYSQL_USER: jonathan
+      MYSQL_PASSWORD: password123
+    ports:
+      - "3306:3306"
