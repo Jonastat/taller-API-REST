@@ -1,13 +1,21 @@
 import express from "express";
 import { createPool } from "mysql2/promise";
+import app from "./app.js"
 
-const app = express()
+const main=()=>{
+    app.listen(app.get("port"))
+    console.log(`Server on port ${app.get("port")}`)
+}
+
+main()
+
+/* const app = express()
 
 const pool = createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'rootpassword123',
-    port: 3306
+    host: process.env.MYSQLDB_HOST,
+    user: process.env.MYSQLDB_ROOT_USER,
+    password: process.env.MYSQLDB_ROOT_PASSWORD,
+    port: process.env.MYSQLDB_PORT
 })
 
 app.get('/', (req, res) => {
@@ -19,4 +27,4 @@ app.get('/ping', async (req, res) => {
 })
 
 app.listen(3000)
-console.log('Server on port', 3000)
+console.log('Server on port', 3000) */

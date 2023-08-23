@@ -4,8 +4,22 @@ services:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword123
-      MYSQL_DATABASE: datosAPI
+      MYSQL_DATABASE: db_api_rest
       MYSQL_USER: jonathan
       MYSQL_PASSWORD: password123
     ports:
       - "3306:3306"
+  api:
+    environment:
+      MYSQLDB_HOST: mysqldb
+      MYSQL_DATABASE: db_api_rest
+      MYSQLDB_ROOT_USER: root
+      MYSQLDB_ROOT_PASSWORD: rootpassword123
+      MYSQLDB_PORT: 3306
+    build: .
+    depends_on:
+      - mysqldb
+    links:
+      - mysqldb
+    ports:
+      - 4000:4000
